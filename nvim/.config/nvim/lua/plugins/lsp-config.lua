@@ -1,7 +1,7 @@
 return {
     {
         "williamboman/mason.nvim",
-        lazy = false,
+        cmd = { "Mason", "MasonInstallAll", "MasonUpdate" },
         config = function()
             require("mason").setup()
         end,
@@ -15,7 +15,7 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
-        lazy = false,
+        event = "User FilePost",
         config = function()
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
