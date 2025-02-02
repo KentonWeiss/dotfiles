@@ -8,7 +8,13 @@ This repository is used to store my personal files. The structure is designed fo
 
 ```
 .
-+-
+|
++- kitty/
+|----|...
++- nvim/
+|----|...
++- starship/
+|----|...
 
 ```
 
@@ -16,5 +22,9 @@ This repository is used to store my personal files. The structure is designed fo
 
 ```
 .
-+-
+|
++- aerospace/
+|----|...
++- sketchybar/
+|----|...
 ```
