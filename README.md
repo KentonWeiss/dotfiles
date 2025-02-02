@@ -2,29 +2,23 @@
 
 This repository is used to store my personal files. The structure is designed for use with GNU stow.
 
-## Layout
+# File split
 
-### Shared Files
+## Shared Files
 
-```
-.
-|
-+- kitty/
-|----|...
-+- nvim/
-|----|...
-+- starship/
-|----|...
+### Terminal Emulator
+kitty/
 
-```
+### Neovim
+nvim/
 
-### Mac Files
+### Terminal Prompt
+sharship/
 
-```
-.
-|
-+- aerospace/
-|----|...
-+- sketchybar/
-|----|...
-```
+## Mac Files
+
+### Tiling Window Manager
+aerospace/
+
+### Menu/Status Bar
+sketchybar/
