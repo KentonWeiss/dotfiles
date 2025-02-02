@@ -7,18 +7,32 @@ This repository is used to store my personal files. The structure is designed fo
 ## Shared Files
 
 ### Terminal Emulator
+```
 kitty/
+```
 
 ### Neovim
+```
 nvim/
+```
 
 ### Terminal Prompt
+```
 sharship/
+```
 
 ## Mac Files
 
 ### Tiling Window Manager
+```
 aerospace/
+```
 
 ### Menu/Status Bar
+```
 sketchybar/
+```
+
+## Arch files
+
+### None Yet
