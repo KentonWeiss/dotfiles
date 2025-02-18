@@ -1,21 +1,33 @@
 #!/bin/bash
 
 # Catppuccin Mocha Colors
+
+# Pink/Red
 export ROSEWATER=0xFFF5E0DC
 export FLAMINGO=0xFFF2CDCD
 export PINK=0xFFF5C2E7
 export MAUVE=0xFFCBA6F7
 export RED=0xFFF38BA8
 export MAROON=0xFFEBA0AC
+
+# Orange/Yellow
 export PEACH=0xFFFAB387
 export YELLOW=0xFFF9E2AF
+
+# Blue/Green
 export GREEN=0xFFA6E3A1
 export TEAL=0xFF94E2D5
 export SKY=0xFF89DCEB
 export SAPPHIRE=0xFF74C7EC
 export BLUE=0xFF89B4FA
+
+# Purple
 export LAVENDER=0xFFB4BEFE
+
+# White
 export TEXT=0xFFCDD6F4
+
+# Gray (Light-Dark)
 export SUBTEXT_1=0xFFBAC2DE
 export SUBTEXT_0=0xFFA6ADC8
 export OVERLAY_2=0xFF9399B2
@@ -24,6 +36,8 @@ export OVERLAY_0=0xFF6C7086
 export SURFACE_2=0xFF585B70
 export SURFACE_1=0xFF45475A
 export SURFACE_0=0xFF313244
+
+# Black
 export BASE=0xFF1E1E2E
 export MANTLE=0xFF181825
 export CRUST=0xff11111b

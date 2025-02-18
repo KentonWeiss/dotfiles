@@ -1,10 +1,21 @@
 #!/bin/bash
 
-# Left Icons
+##### Left Icons #####
+
+# Apple Logo
 APPLE_LOGO=
 
-# Right Icons
+# Chevron
+CHEVRON=
+
+
+##### Right Icons #####
+
+# Clock
 CLOCK_ICON=
+
+# Calendar
+CALENDAR=
 
 # Battery Icons
 BATTERY_100=
@@ -14,4 +25,3 @@ BATTERY_25=
 BATTERY_0=
 BATTERY_CHARGING=
 
-# Volume Icons

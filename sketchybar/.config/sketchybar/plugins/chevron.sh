@@ -4,21 +4,16 @@
 source "$CONFIG_DIR/icons.sh"
 source "$CONFIG_DIR/colors.sh"
 
-# Formatting
 format=(
     # Icon
-    icon=$APPLE_LOGO
-    icon.color=$CRUST
-    icon.padding_left=8
-    icon.padding_right=9
-    icon.y_offset=-1
+    icon=$CHEVRON
+    icon.color=$BLUE
 
     # Label
     label.drawing=off
 
     # Background
-    background.color=$TEAL
-    background.corner_radius=5
+    background.drawing=off
 )
 
 sketchybar --set $NAME "${format[@]}"

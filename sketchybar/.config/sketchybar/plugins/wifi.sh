@@ -1,3 +1,4 @@
+
 #!/bin/sh
 
 source "$CONFIG_DIR/icons.sh"
@@ -8,12 +9,12 @@ logo_format=(
     padding_right=2
 
     # Icon
-    icon=$CLOCK_ICON
+    icon=$CALENDAR
     icon.color=$CRUST
     icon.padding_left=5
 
     # Icon Background
-    icon.background.color=$FLAMINGO
+    icon.background.color=$BLUE
     icon.background.height=23
     icon.background.corner_radius=4
     icon.background.padding_right=10
@@ -32,10 +33,8 @@ label_format=(
     # Icon
     icon.drawing=off
 
-    # Label
-    label="$(date '+%I:%M:%S %p')"
-
     # Label Background
+    label="WiFi"
     label.background.color=$SURFACE_1
     label.background.height=23
     label.background.corner_radius=4
@@ -45,10 +44,12 @@ label_format=(
     background.drawing=off
 )
 
-# Set the calendar label's formatting
-sketchybar --set clock "${label_format[@]}"
+if [ "$SENDER" = "wifi_change" ]; then
+    # Set the calendar label's formatting
+    sketchybar --set wifi "${label_format[@]}" label="$INFO"
 
-# Add the logo to the left of the label
-sketchybar --add item clock_logo right \
-           --set clock_logo "${logo_format[@]}" \
-           --move clock_logo after clock
+    # Add the logo to the left of the label
+    sketchybar --add item wifi_logo right \
+               --set wifi_logo "${logo_format[@]}" \
+               --move wifi_logo after wifi
+fi

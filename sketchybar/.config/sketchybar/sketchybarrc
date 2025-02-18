@@ -9,85 +9,109 @@ source "$CONFIG_DIR/icons.sh" # Loads all defined icons
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
+##### Custom Events #####
+
+# Aerospace workspace integration
+sketchybar --add event aerospace_workspace_change
+
 ##### Bar Appearance #####
 
 bar_config=(
-    height=35
+    height=32
     color=$BASE
-    shadow=on
+    shadow=off
     position=top
     sticky=on
-    padding_right=5
-    padding_left=5
+    padding_right=4
+    padding_left=4
     corner_radius=9
-    y_offset=5
+    y_offset=4
     margin=5
     blur_radius=20
 )
 
 sketchybar --bar "${bar_config[@]}"
 
-##### Setting Defaults #####
+##### Defaults #####
 
 default=(
-  padding_left=5
-  padding_right=5
-  icon.font="JetBrainsMono Nerd Font:Bold:16.0"
-  label.font="JetBrainsMono Nerd Font:Bold:12.0"
-  icon.color=$CRUST
-  label.color=$TEXT
-  icon.padding_left=4
-  icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=4
+    # General Padding
+    padding_left=4
+    padding_right=4
+
+    # Icon Settings
+    icon.font="JetBrainsMono Nerd Font:Bold:15.0"
+    icon.color=$CRUST
+    icon.padding_left=4
+    icon.padding_right=4
+
+    # Label Settings
+    label.font="JetBrainsMono Nerd Font:ExtraBold:12.0"
+    label.color=$TEXT
+    label.padding_left=4
+    label.padding_right=4
+
+    # Background Settings
+    background.height=23
+    background.corner_radius=4
+    background.color=$SURFACE_1
 )
 sketchybar --default "${default[@]}"
 
-##### Adding Left Apple Icon #####
+##### Left Items #####
 
+# Apple Logo
 sketchybar --add item logo left \
            --set logo script="$PLUGIN_DIR/apple.sh" \
 
-##### Adding Right Items #####
 
-sketchybar --add item clock right \
-           --set clock update_freq=1 script="$PLUGIN_DIR/clock.sh" \
-           --add item battery right \
-           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           --subscribe battery system_woke power_source_change \
-
-##### Force all scripts to run the first time (never do this in a script) #####
-sketchybar --update
-
-
-### Custom config
-
-# Aerospace workspace integration
-
-sketchybar --add event aerospace_workspace_change
-
+# Aerospace Workspaces
 for sid in $(aerospace list-workspaces --all); do
     sketchybar --add item space.$sid left \
         --subscribe space.$sid aerospace_workspace_change \
         --set space.$sid \
-        background.color=$SURFACE_2 \
-        background.corner_radius=5 \
-        background.height=20 \
-        background.drawing=off \
-        label="$sid" \
-        click_script="aerospace workspace $sid" \
-        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+              icon.drawing=off \
+              label="$sid" \
+              label.padding_left=10 \
+              label.padding_right=10 \
+              click_script="aerospace workspace $sid" \
+              script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
 
-##### Adding Left Items #####
+sketchybar --add bracket spaces '/space\..*/'
 
+# Chevron
 sketchybar --add item chevron left \
-           --set chevron icon= \
-           --set chevron icon.font.size=12 \
-           --set chevron icon.color=$BLUE \
-           --set chevron label.drawing=off \
-           --add item front_app left \
-           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+           --set chevron script="$PLUGIN_DIR/chevron.sh"
+
+# Front-App Name
+sketchybar --add item front_app left \
+           --set front_app script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched
 
+##### Right Items #####
 
+# Clock
+sketchybar --add item clock right \
+           --set clock update_freq=1 script="$PLUGIN_DIR/clock.sh"
+
+# Calendar
+sketchybar --add item calendar right \
+           --set calendar update_freq=120 script="$PLUGIN_DIR/calendar.sh"
+
+# Volume (Uncomment to Use)
+# sketchybar --add item volume right \
+#            --set volume script="$PLUGIN_DIR/volume.sh" \
+#            --subscribe volume volume_change
+
+# Battery
+sketchybar --add item battery right \
+           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+           --subscribe battery system_woke power_source_change \
+
+# Wifi
+# sketchybar --add item wifi right \
+#            --set wifi script="$PLUGIN_DIR/wifi.sh"
+
+##### Force all scripts to run the first time #####
+sketchybar --update

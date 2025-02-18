@@ -1,10 +1,26 @@
 #!/bin/sh
 
-# Some events send additional information specific to the event in the $INFO
-# variable. E.g. the front_app_switched event sends the name of the newly
-# focused application in the $INFO variable:
-# https://felixkratz.github.io/SketchyBar/config/events#events-and-scripting
+# Icon and Color Variables
+source "$CONFIG_DIR/icons.sh"
+source "$CONFIG_DIR/colors.sh"
 
+# Formatting
+format=(
+    # Icon
+    icon.drawing=off
+
+    # Label
+    # The label variable executes a bash command to get the window name from the Aerospace WM
+    label="$(aerospace list-windows --focused --format "%{app-name} - %{window-title}")"
+    label.color=$CRUST
+    label.max_chars=50
+
+    # Background
+    background.color=$YELLOW
+    background.corner_radius=5
+)
+
+# Set/Update the name when the app is switched
 if [ "$SENDER" = "front_app_switched" ]; then
-  sketchybar --set "$NAME" label="$INFO"
+    sketchybar --set $NAME "${format[@]}"
 fi

@@ -8,12 +8,12 @@ logo_format=(
     padding_right=2
 
     # Icon
-    icon=$CLOCK_ICON
+    icon=$CALENDAR
     icon.color=$CRUST
     icon.padding_left=5
 
     # Icon Background
-    icon.background.color=$FLAMINGO
+    icon.background.color=$BLUE
     icon.background.height=23
     icon.background.corner_radius=4
     icon.background.padding_right=10
@@ -33,7 +33,7 @@ label_format=(
     icon.drawing=off
 
     # Label
-    label="$(date '+%I:%M:%S %p')"
+    label="$(date -I)"
 
     # Label Background
     label.background.color=$SURFACE_1
@@ -46,9 +46,9 @@ label_format=(
 )
 
 # Set the calendar label's formatting
-sketchybar --set clock "${label_format[@]}"
+sketchybar --set calendar "${label_format[@]}"
 
 # Add the logo to the left of the label
-sketchybar --add item clock_logo right \
-           --set clock_logo "${logo_format[@]}" \
-           --move clock_logo after clock
+sketchybar --add item calendar_logo right \
+           --set calendar_logo "${logo_format[@]}" \
+           --move calendar_logo after calendar
